@@ -10,7 +10,7 @@ class SoundCloudClient {
         return cy.request({
             method: method,
             url: fullUrl,
-            failOnStatusCode: false // Чтобы мы могли сами обработать ошибку 401
+            failOnStatusCode: false
         });
     }
 
@@ -20,6 +20,24 @@ class SoundCloudClient {
 
     getUser(userId) {
         return this.sendRequest('GET', `/users/${userId}`);
+    }
+
+    loginViaApi(email, password) {
+        return cy.request({
+            method: 'POST',
+            url: 'https://api.soundcloud.com/oauth2/token',
+            body: {
+                grant_type: 'password',
+                client_id: this.clientId,
+                username: email,
+                password: password,
+                scope: 'non-expiring'
+            }
+        }).then((response) => {
+
+            Cypress.env('token', response.body.access_token);
+            cy.setCookie('oauth_token', response.body.access_token);
+        });
     }
 }
 
