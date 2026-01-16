@@ -1,5 +1,5 @@
-import soundCloudClient from '../api/SoundCloudClient';
-import genres from '../fixtures/genres.json';
+import soundCloudClient from '../../api/SoundCloudClient';
+import genres from '../../fixtures/genres.json';
 
 describe('SoundCloud API: Data Driven Genre Search', () => {
 

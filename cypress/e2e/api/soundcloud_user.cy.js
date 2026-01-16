@@ -1,4 +1,4 @@
-import soundCloudClient from '../api/SoundCloudClient';
+import soundCloudClient from '../../api/SoundCloudClient';
 
 describe('SoundCloud API: User Data Chaining', () => {
 

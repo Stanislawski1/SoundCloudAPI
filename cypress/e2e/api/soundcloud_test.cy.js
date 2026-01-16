@@ -1,9 +1,9 @@
-import soundCloudClient from '../api/SoundCloudClient';
-import { trackSchema } from '../fixtures/schemas/trackShema';
+import soundCloudClient from '../../api/SoundCloudClient';
+import { trackSchema } from '../../fixtures/schemas/trackShema';
 import Ajv from 'ajv';
 
 const ajv = new Ajv();
-describe('SoundCloud API: Advanced Validation', () => {
+describe('SoundCloud API: Validation of tracks', () => {
 
     it('Should validate full JSON schema for all found tracks', () => {
         soundCloudClient.searchTracks('Radiohead Let down', 5).then((response) => {
@@ -23,5 +23,4 @@ describe('SoundCloud API: Advanced Validation', () => {
             });
         });
     });
-
 });
